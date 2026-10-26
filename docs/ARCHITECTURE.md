@@ -1,27 +1,27 @@
-# Architecture and invariants
+# How the app works
 
-The app is a server-rendered Laravel application, with Blade/Sass and JavaScript for catalog search and interactive forms. Routes/controllers enforce account state, role and shop boundaries. Domain services own multi-row inventory and production mutations.
+Laravel builds the pages with Blade. JavaScript handles product search and interactive forms. Controllers check requests and the selected shop. Services handle stock, deliveries and workshop work that changes several records at once.
 
-| Area | Main responsibility |
+| Folder | What it does |
 |---|---|
-| `app/Http/Middleware` | Account checks, CSRF integration, demo isolation and response policies |
-| `app/Http/Controllers` | Request validation, shop-scoped queries and views |
-| `app/Services` | Transfer state machines, hub movements, workshop balances and ledgers |
-| `app/Support` | Money/tender helpers, receipt snapshots, CSV cells and transaction retries |
-| `database/migrations` | Relational structure, constraints, unique keys and lookup indexes |
-| `database/seeders` | Invented demo dataset, with overwrite refusal |
-| `tests` and `tools/test-*` | Feature/unit tests plus isolated MySQL/MariaDB integrity/concurrency checks |
+| `app/Http/Middleware` | Checks accounts, roles, demo restrictions and response rules |
+| `app/Http/Controllers` | Checks input, loads shop records and returns pages |
+| `app/Services` | Handles stock moves, deliveries, workshop balances and earnings |
+| `app/Support` | Helps with money, receipt snapshots, CSV output and transaction retries |
+| `database/migrations` | Defines database tables, constraints and indexes |
+| `database/seeders` | Adds fictional sample data and refuses to overwrite existing records |
+| `tests` and `tools/test-*` | Checks features and database behavior |
 
-## Key invariants
+## Rules the code protects
 
-- Cart items are bound to the selected shop. Changing shops clears the cart; checkout rejects mismatched items.
-- Cashiers cannot lower prices by forging a request or leaving stale cart prices; managers intentionally have override permission.
-- Refund amounts use historical sale prices, and the order row is locked before remaining quantities are checked.
-- Stock operations lock affected balances in stable order and retry supported transaction conflicts. Atomic updates do not imply a no-negative-shop-stock policy.
-- Transfer transitions validate source/destination authority and current state; repeated workflow requests must not credit inventory twice.
-- Workshop production commits stock and earnings together. UUID request keys and payload hashes distinguish safe replays from mismatched submissions. Historical rates are snapshots.
-- Assembly consumes available pooled upper pairs; soles are outside this simplified rule.
-- Fundi payments record an already-made fictional payment. They do not contact a financial service.
-- Public demo owner powers are reduced independently of general owner permissions.
+- A cart belongs to one shop. Switching shops clears it; checkout rejects items from another shop.
+- Cashiers use catalog prices, even if someone changes a request or leaves an old price in the cart. Managers may override sale prices.
+- Refunds use the original sale price and check how much is left to refund while the sale is locked.
+- Stock changes lock the relevant balances and retry supported database conflicts. Shops can still have negative stock under the demo's selling rule.
+- Deliveries check who can act and which step comes next. Repeating a request must not add stock twice.
+- Workshop jobs update stock and earnings together. Request IDs and saved input hashes help detect repeated or changed submissions. Historical rates are saved with each entry.
+- Shoe assembly consumes available pooled uppers. Soles are outside this example.
+- Worker payment entries record fictional payments; they do not contact a financial service.
+- Demo mode restricts the owner account separately from the app's wider owner permissions.
 
-The backup cipher/archive utilities remain as educational source and regression examples. Demo HTTP, CLI and scheduling paths deny actual recovery operations. Do not connect cloud accounts to this sandbox.
+Backup utilities remain as study and test examples. Demo routes, commands and schedules block recovery operations. Do not connect a cloud account.

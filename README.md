@@ -1,44 +1,39 @@
 # Retail Workshop POS Demo
 
-A Laravel portfolio project connecting **shop sales, inventory transfers and workshop production**. Every shop, customer, worker, payment reference and catalog entry in the sample dataset is fictional.
+A sample shop and workshop app built with Laravel. You can make a sale, print a receipt, move stock between shops and record workshop jobs.
 
-This is an educational demonstration, with a read-only owner account and usable cashier/manager workflows. It does not send payments, connect to a real business, or provide production accounting guarantees.
+All names, products, payments and records are made up. Payments are recorded only; the app does not move money.
 
-## Explore
+![Workshop overview with sample data](docs/screenshots/workshop.jpg)
 
-| Username | What to try |
+## Try the demo
+
+Use one of these accounts. The password for all four is **`DemoWorkshop2026!`**.
+
+| Username | What you can do |
 |---|---|
-| `cashier` | Search products, make a sample sale, print a receipt, refund a sample transaction |
-| `manager` | Receive/count stock, manage hub deliveries, record workshop production and fictional ledger payments |
-| `south-cashier` | Receive the seeded hub delivery into the second demo shop |
-| `owner` | Read-only overview, reports and shop switching |
+| `cashier` | Search products, make a sale, print receipts and refund sales |
+| `manager` | Manage stock, hub deliveries and workshop jobs |
+| `south-cashier` | Receive the sample delivery at the second shop |
+| `owner` | View reports and switch shops; this account is read-only |
 
-All fixture accounts use **`DemoWorkshop2026!`**. This is an intentionally public sample password. Use these accounts only with the isolated synthetic dataset. Do not enter personal or real business information.
+These are public demo accounts. Use them only with sample data. Follow the [five-minute walkthrough](docs/WALKTHROUGH.md) if you want a place to start.
 
-![Fictional workshop overview](docs/screenshots/workshop.jpg)
+## Run it on your computer
 
-## Features
+You need PHP 8.2+, Composer 2, Node 22.12+, npm and MariaDB 10.11+ or a compatible MySQL server. PHP also needs mbstring, XML/DOM, fileinfo, PDO MySQL, sodium, curl and OpenSSL.
 
-- Shop-specific inventory and cart isolation, with cashier/manager/owner permissions.
-- Product search tolerant of typos, missing spaces, size variants and product codes.
-- Cash and Paybill **recordkeeping**, combined tender, thermal receipts and partial/full refunds.
-- Stock requests with reservations, confirmation, dispatch and receipt transitions.
-- Hub inventory and audited delivery/transfer events.
-- Workshop tailoring, upper making, pooled-upper shoe assembly, and fundi earnings/advance/payout ledgers.
-- Historical receipt snapshots, payment summaries, filtered history and reports.
-- Transaction locking, idempotent workflow requests and regression tests.
+Create an empty database called `retail_workshop_demo` and a database user that can access only that database. Do not use a business database.
 
-Cashiers sell at server-derived catalog prices. Managers may override sale-line prices. Catalog edits and sale-line overrides are separate operations. Existing zero-stock selling is intentional; quantity updates are transactional, but shop balances can become negative. Assembly consumes pooled uppers without soles, reflecting the demo's simplified manufacturing rule.
-
-## Local setup
-
-Requires **PHP 8.2+**, Composer 2, **Node 22.12+** and npm, Python 3, and **MariaDB 10.11+** or a compatible MySQL server. PHP needs mbstring, XML/DOM, fileinfo, PDO MySQL, sodium, curl and OpenSSL. The integration tools additionally need local `mariadbd`, `mariadb-install-db` and `mysql` commands.
-
-Use a dedicated database and database account. Never point this demo at an existing business database. For example, provision `retail_workshop_demo` and a user restricted to that schema using your database administration tool.
+From this project's folder, run:
 
 ```sh
 cp .env.example .env
-# Edit .env: set your dedicated DB host, user and password.
+```
+
+Open `.env` and enter your demo database host, name, username and password. Keep `DEMO_MODE=true` and `APP_DEBUG=false`. Then run:
+
+```sh
 composer install
 npm ci --ignore-scripts
 npm run build
@@ -47,58 +42,60 @@ php artisan migrate --seed
 php artisan serve
 ```
 
-Open [the local app](http://127.0.0.1:8000). Browser libraries/fonts are copied from locked npm dependencies by the build; no missing local vendor folder or proprietary graphics are required. `APP_DEBUG=false` and `DEMO_MODE=true` are the defaults. Keep demo mode enabled.
+Open [http://127.0.0.1:8000](http://127.0.0.1:8000) and sign in with a demo account. The build includes the browser libraries and fonts.
 
-The seeder refuses to run if users, products or orders already exist. It creates two shops, two hubs, 12 fictional product variants, four sample accounts, sales history, three workshop production entries, a sample advance and a pending hub delivery.
+Setup adds two shops, two hubs, 12 product variants, four accounts, sample sales, workshop jobs, an advance and a pending delivery. It refuses to add this data if users, products or orders already exist.
 
-### Reset the disposable dataset
+## What to expect
+
+Cashiers use catalog prices. Managers can change the price on a sale. A shop can sell an item even when its stock is zero, so stock can become negative. Shoe assembly uses pooled uppers; soles are left out of this simplified example.
+
+The app also includes combined cash/Paybill records, partial refunds, stock requests, delivery tracking, workshop earnings and reports. Backups, cloud connections, imports and shared-account administration are disabled in demo mode.
+
+## Start over
+
+**This deletes the records in your configured demo database and clears the app's file sessions.** Check your `.env` before running it.
 
 ```sh
 php artisan demo:reset --force
 ```
 
-This command refuses unless demo mode is on and the configured database name ends in `_demo`. It **replaces that demo database**, then clears this application's file sessions. It does not reset through an HTTP endpoint. Only run it against your disposable schema.
+Reset works only when demo mode is on and the database name ends in `_demo`. That name is a safeguard; you still need to check that you selected the right database.
 
-## Verify
+## Run the checks
 
-Build assets before running feature tests. The unit/feature suite includes isolated mock-based cases; database integrity tests separately create temporary MariaDB instances with private sockets and no network listeners.
+Build the assets first, then run:
 
 ```sh
 php artisan test
 node tools/test-pos-search.cjs
 python3 tools/test-backup-archive.py
+composer audit --locked
+npm audit
+```
+
+The database checks below also need Python 3 and local `mariadbd`, `mariadb-install-db` and `mysql` commands. Each creates its own temporary MariaDB server.
+
+```sh
 APP_ENV=testing DEMO_MODE=true php tools/test-demo.php
 APP_ENV=testing DEMO_MODE=false php tools/test-workshop.php
 APP_ENV=testing DEMO_MODE=false php tools/test-stock-transfers.php
 APP_ENV=testing DEMO_MODE=false php tools/test-hubs.php
 APP_ENV=testing DEMO_MODE=false php tools/test-refund-integrity.php
-composer audit --locked
-npm audit
 ```
 
-The feature suite explicitly selects non-demo configuration for inherited controls, while dedicated demo tests turn the restrictions on. The non-demo setting in isolated integration commands is for regression testing only, not public hosting. [Verification evidence](docs/VERIFICATION.md) records the latest local checks.
+Those `DEMO_MODE=false` commands test the app's wider features in temporary databases. Keep demo mode on when running a shared demo. See [what was checked](docs/VERIFICATION.md).
 
-## Architecture
+## Sharing the app
 
-```mermaid
-flowchart LR
-  Browser[Blade pages + JavaScript] --> Routes[Session auth, CSRF, demo restrictions]
-  Routes --> Controllers[Shop-scoped controllers]
-  Controllers --> Services[Stock, hub and workshop services]
-  Services --> DB[(Dedicated MySQL/MariaDB demo schema)]
-  Controllers --> Reports[Historical receipts and reports]
-```
+This GitHub repository shares the code. It does not provide a live website.
 
-Read [architecture and invariants](docs/ARCHITECTURE.md), [the demo walkthrough](docs/WALKTHROUGH.md), and [security boundaries](SECURITY.md).
+Hosting needs a separate disposable database, a fresh application key, HTTPS, secure cookies and a web server pointing at `public/`. Keep mail and cloud services disconnected. Visitors share the sample records and can change them. Take the app offline before resetting shared data.
 
-## Hosting boundaries
+Read [security and hosting notes](SECURITY.md) before putting it online. [How the app works](docs/ARCHITECTURE.md) explains the code.
 
-Publishing this source repository does not deploy a website. To host it, use a separate disposable database, fresh application key and session cookie, HTTPS and secure cookies, built static assets, and a restricted runtime identity. Never run a Vite development server publicly.
+## Credits
 
-Demo mode blocks all backup/recovery/cloud routes before authentication, blocks shared-account administration and imports, and makes the owner account read-only except shop switching/logout. Recovery CLI operations and backup schedules are disabled. No original database, credentials, uploads, photos, logos, backup archives, deployment paths or Git history are included.
+This is a separate demo adapted from the author's earlier retail app, with fresh Git history and fictional data. The original business database, credentials, uploads, branding and documents are excluded.
 
-If you run a shared demo, schedule an external reset task after closing traffic, add host resource limits, and keep mail/cloud services disconnected. Users can mutate fictional shop/workshop records, so the public database is not durable or trusted. See `SECURITY.md` for limits.
-
-## Provenance and licensing
-
-Adapted from the author's earlier retail application into a separate synthetic portfolio project with fresh history. Frameworks, libraries and template influences are credited in [THIRD_PARTY_NOTICES.md](THIRD_PARTY_NOTICES.md). This repository does not grant a new blanket license over application code or third-party assets; dependencies retain their own licenses. No business endorsement is implied.
+See [third-party credits](THIRD_PARTY_NOTICES.md) for Laravel, the admin template and other libraries. Their licenses still apply. This repository does not add a blanket license for all application code or assets.

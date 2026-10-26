@@ -1,9 +1,9 @@
-# Verification — 26 October 2026
+# What was checked — 26 October 2026
 
-Fresh checks for this sanitized derivative, performed in a separate workspace with invented data:
+These checks ran on this separate demo, using made-up data:
 
-- A clean-room source export passed Composer installation, `npm ci`, asset build, application-key generation and PHPUnit without inherited state. Configuration and route caching were also checked.
-- Frontend installation/build succeeds from the declared lockfile; browser dependencies are provisioned by `tools/prepare-assets.cjs`.
+- A fresh copy of the source passed Composer installation, `npm ci`, asset build, application-key generation and PHPUnit without files or state from the original app. Configuration and route caching were also checked.
+- The frontend installed and built from the lockfile. Browser libraries are prepared by `tools/prepare-assets.cjs`.
 - **97 PHPUnit tests, 677 assertions passed**, including demo recovery denial, encoded backup paths, owner read-only behavior, administrative write denial, sensitive permission checks, recovery CLI refusal and reset-name/confirmation safeguards.
 - `tools/test-demo.php` passed full migrations and synthetic seeding on an isolated temporary MariaDB server, cashier name/price tamper rejection, checkout repricing, authorized manager override, assigned-shop binding and repeat-seed refusal.
 - Workshop integrity/concurrency harness passed production stages, component shortages/replays, pooled-upper assembly, exact-money ledger operations, rollback, concurrent payouts, hub transfers, manager permissions and rendered views.
@@ -15,8 +15,8 @@ Fresh checks for this sanitized derivative, performed in a separate workspace wi
 - Gitleaks v8.30.1 staged-source scan reported no leaks. An additional file/identity scan found no former business branding, private host paths, operational data files or recognizable credential patterns in the proposed export.
 - Browser sign-in, hub inventory and seeded workshop overview were checked in the in-app preview. Screenshots contain only the invented dataset. No browser errors/warnings were observed on the checked screen.
 
-All database integration harnesses provision disposable private-socket MariaDB instances and remove them afterward. The original business repository and database were not modified. Inherited recovery primitives are covered by unit/archive tests; full backup restoration is disabled in the demo and was not exercised as a public capability.
+Each database check creates a temporary MariaDB server with a private socket, then removes it. The original business repository and database were not modified. Unit and archive tests cover the backup helpers. Full restoration is disabled in demo mode and was not tested as a public feature.
 
-These checks are scoped evidence, not a security certification, capacity guarantee or verification of a future hosted environment. CI is supplied for repeatability; no remote CI run is claimed before publication.
+These results describe the local checks on that date. They do not certify security, capacity or a future hosted setup. The included CI workflow lets these checks run again.
 
 Claude independently reviewed the credential-free isolation design. Its suggestions on global recovery denial, encoded-path tests, overwrite/reset safeguards and shared-demo limits were checked against the implementation. Unverified hypothetical profile/upload routes were not treated as existing defects.
