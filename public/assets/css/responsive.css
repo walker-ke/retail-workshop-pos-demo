@@ -1,0 +1,93 @@
+/* Shared screen layouts: content stays within the space beside navigation. */
+@media screen {
+  body { margin-top: 0; }
+  main, .card, .card-body, .row > *, .container { min-width: 0; }
+  img, svg, canvas { max-width: 100%; }
+  .management-page { margin-top: 56px; padding: 16px; min-width: 0; }
+  .management-page .head { position: static; height: auto; box-shadow: none; padding: 0 0 18px; display: flex; flex-wrap: wrap; gap: 12px; align-items: center; }
+  .management-page .head p { position: static !important; inset: auto !important; padding: 0; margin: 0; font-size: clamp(1.4rem, 2vw, 2rem); overflow-wrap: anywhere; }
+  .management-page .head > div { position: static !important; }
+  .management-page .all, .management-page .card, .management-page > .container,
+  .management-page .row.justify-content-center { position: static !important; inset: auto !important; width: 100% !important; max-width: 100%; margin-inline: 0 !important; }
+  .management-page > .container { padding: 0; }
+  .management-page .card-body { overflow-x: auto; }
+  .management-page table { min-width: 680px; }
+  .management-page .grid-container { display: flex; flex-wrap: wrap; gap: 12px; }
+  .management-page .card-header { display: flex; flex-wrap: wrap; gap: 10px; align-items: center; }
+  .management-page .dataTables_filter label { display: flex; flex-wrap: wrap; gap: 8px; align-items: center; }
+  .management-page .dataTables_filter input { width: min(100%, 220px); margin: 0; }
+  .dataTables_wrapper .pagination { flex-wrap: wrap; gap: 4px; }
+  .btn, .form-control:not(textarea), .form-select, .shop-picker-select, .page-link { min-height: 44px; }
+  .shop-picker-form { flex-wrap: wrap; max-width: 100%; }
+  .shop-picker-select { max-width: 100%; }
+  .modal-dialog { margin: 12px auto; width: calc(100% - 24px); }
+  .modal-content { max-height: calc(100dvh - 24px); overflow-y: auto; }
+  .modal-body { min-height: 0; }
+  .modal-footer { flex-wrap: wrap; gap: 8px; }
+  .modal-footer .btn { position: static !important; inset: auto !important; margin: 0; }
+  .modal-content h1 { font-size: clamp(1.4rem, 4vw, 2rem); }
+  .site-footer { position: static !important; inset: auto !important; margin-top: 24px !important; }
+  .footer-inner .pt, .footer-inner .cp { position: static; inset: auto; }
+  .dash-shell, .prod-shell { padding-top: 74px !important; }
+  .tenderedAmount { display: grid; grid-template-columns: minmax(0, 1fr); gap: 12px; }
+  .tenderedAmount > *, .tenderedAmount input { margin-left: 0 !important; max-width: 100%; width: 100% !important; }
+  .pm-stat-box { min-width: 0 !important; flex: 1 1 220px; }
+  .sidebar-toggle-btn { min-height: 44px; min-width: 44px; }
+  #app:has(.pos-navigation) .sidebar-toggle-btn { display: inline-block; }
+  :focus-visible { outline: 3px solid #7a1f36; outline-offset: 3px; }
+  @media (min-width: 901px) {
+    .management-page { margin-left: 270px; padding: 24px; }
+    .receipt-with-sidebar { margin-left: 270px; }
+  }
+  @media (max-width: 900px) {
+    .dash-shell, .prod-shell { padding-top: 70px !important; }
+    .management-page .card-body { padding: 12px; }
+    .receipt-page { padding-inline: 12px; }
+  }
+  @media (max-width: 575px) {
+    .dataTables_wrapper .row { row-gap: 12px; }
+    .dataTables_wrapper .dataTables_filter, .dataTables_wrapper .dataTables_length { text-align: left; }
+    .navbar .container { gap: 4px; }
+    .navbar .navlogo { flex-shrink: 1 !important; min-width: 0; }
+    .navbar .navlogo a { padding-inline: 0; font-size: .85rem; overflow-wrap: anywhere; }
+    .pm-stats-row { gap: 12px !important; }
+  }
+}
+@media screen {
+ .prod-search-row, .dash-chart-header, .dash-period-header { flex-wrap: wrap; gap: 12px; }
+ .prod-count { white-space: normal; }
+ .prod-search-row input { min-width: 0; flex: 1 1 150px; max-width: 100%; }
+ .dash-grid { grid-template-columns: repeat(3, minmax(0, 1fr)); }
+ .dash-card, .dash-bar-col, .dash-list li span { min-width: 0; }
+ .dash-bar-value { font-size: clamp(.5rem, 1vw, .75rem); }
+ .dash-list li { gap: 8px; }
+ .modal-content { max-height: calc(100vh - 24px); max-height: calc(100dvh - 24px); }
+ @media (max-width: 1100px) { .dash-grid { grid-template-columns: repeat(2, minmax(0, 1fr)); } }
+ @media (max-width: 900px) { .dash-grid { grid-template-columns: minmax(0, 1fr); } }
+}
+
+@media screen { .auth-wrapper { padding-top: 72px; } .auth-card { padding: clamp(20px, 5vw, 36px); } .auth-brand-title { overflow-wrap: anywhere; } }
+
+/* Keep operational text legible without changing printed receipts. */
+@media screen {
+ main .text-muted{color:#5d6670!important;}
+ main :is(.form-control,.form-select){font-size:max(.9rem,14px);color:#262b30;}
+ main input::placeholder,main textarea::placeholder{color:#626a73;opacity:1;}
+ :is(.management-page,.prod-shell,.transfer-page,.hub-page) label{font-size:max(.875rem,14px);font-weight:500;}
+ :is(.management-page,.prod-shell,.transfer-page,.hub-page) :is(th,td){font-size:max(.875rem,14px);line-height:1.45;}
+ :is(.management-page,.prod-shell,.transfer-page,.hub-page) :is(h1,h2,h3){color:#252a30;line-height:1.35;}
+ .transfer-page .transfer-status,.hub-page .badge,.hub-delivery .badge{font-size:max(.8rem,13px);font-weight:600;}
+ .transfer-page .transfer-available,.transfer-page .transfer-record>p{font-size:max(.875rem,14px);color:#505963;}
+ :is(.management-page,.prod-shell,.transfer-page,.hub-page) :is(input,select,button,a.btn){scroll-margin-top:80px;}
+}
+@media screen {
+ .dash-shell :is(.dash-chart-sub,.dash-total-sub,.dash-card-sub,.dash-total-amount,.dash-empty){font-size:.875rem;color:#5d6670;}
+ .dash-shell :is(.dash-bar-value,.dash-bar-label){font-size:.75rem;color:#505963;}
+ .prod-shell .prod-tool{font-size:.75rem;line-height:1.3;}
+}
+@media screen {
+ main :is(.bg-dark,.text-bg-dark) .text-muted{color:#d1d6dc!important;}
+}
+@media screen and (max-width:700px){
+ main :is(input.form-control,textarea.form-control,select.form-select){font-size:max(1rem,16px);}
+}

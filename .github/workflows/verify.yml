@@ -1,0 +1,40 @@
+name: Verify demo
+on: [push, pull_request]
+permissions:
+  contents: read
+jobs:
+  test:
+    runs-on: ubuntu-latest
+    env:
+      APP_ENV: testing
+      APP_KEY: base64:c3ludGhldGljLXJldmlldy1rZXktMzJieXRlcyEwMDA=
+      DB_HOST: 127.0.0.1
+      DB_PORT: 1
+      DB_DATABASE: isolated_demo_test
+      DB_USERNAME: demo_test
+      DB_PASSWORD: unused
+    steps:
+      - uses: actions/checkout@v4
+      - uses: shivammathur/setup-php@v2
+        with:
+          php-version: '8.2'
+          extensions: mbstring, dom, fileinfo, pdo_mysql, sodium
+          coverage: none
+      - uses: actions/setup-node@v4
+        with:
+          node-version: '22'
+          cache: npm
+      - run: sudo apt-get update && sudo apt-get install -y mariadb-server mariadb-client
+      - run: composer install --no-interaction --prefer-dist
+      - run: npm ci --ignore-scripts
+      - run: npm run build
+      - run: php artisan test
+      - run: node tools/test-pos-search.cjs
+      - run: python3 tools/test-backup-archive.py
+      - run: DEMO_MODE=true php tools/test-demo.php
+      - run: DEMO_MODE=false php tools/test-workshop.php
+      - run: DEMO_MODE=false php tools/test-stock-transfers.php
+      - run: DEMO_MODE=false php tools/test-hubs.php
+      - run: DEMO_MODE=false php tools/test-refund-integrity.php
+      - run: composer audit --locked
+      - run: npm audit

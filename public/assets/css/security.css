@@ -1,0 +1,37 @@
+.all .card p{
+    font-size: 14px;
+}
+
+.all .card h5{
+    font-size: 18px;
+    font-weight: 700;
+}
+
+.sec-tabs{
+    display: flex;
+    gap: 4px;
+    margin-bottom: 14px;
+}
+
+.sec-tab{
+    padding: 10px 22px;
+    border-radius: 8px 8px 0 0;
+    background: #f1f1f3;
+    color: #555;
+    font-weight: 600;
+    text-decoration: none;
+    font-size: 14px;
+    border-bottom: 3px solid transparent;
+}
+
+.sec-tab:hover{
+    color: #7a1f36;
+    text-decoration: none;
+}
+
+.sec-tab.active{
+    background: #fff;
+    color: #7a1f36;
+    border-bottom: 3px solid #7a1f36;
+    box-shadow: 0 -2px 6px rgba(0,0,0,0.04);
+}

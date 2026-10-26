@@ -1,0 +1,7 @@
+.receipt-settings-panel { margin: 56px 24px 40px 294px; max-width: 840px; padding: 28px; background: white; border: 1px solid #e2e2e2; border-radius: 8px; }
+.receipt-settings-panel h1 { font-size: 26px; margin: 0 0 12px; }
+.receipt-settings-panel label { display: block; font-weight: 600; margin: 0 0 6px; }
+.receipt-settings-panel select { max-width: 380px; }
+.receipt-settings-fields { display: grid; grid-template-columns: repeat(2, minmax(0, 1fr)); gap: 18px; }
+@media (max-width: 900px) { .receipt-settings-panel { margin: 56px 12px 24px; padding: 20px; } }
+@media (max-width: 560px) { .receipt-settings-fields { grid-template-columns: 1fr; } }

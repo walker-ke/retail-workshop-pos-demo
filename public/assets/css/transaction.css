@@ -1,0 +1,24 @@
+.transaction-page { min-width: 0; margin: 56px 0 0; padding: 16px; }
+.transaction-page h1 { margin: 0 0 8px; font-size: clamp(1.5rem, 1.1rem + 1vw, 2rem); }
+.transaction-hint { margin: 0 0 20px; font-size: .9rem; line-height: 1.5; color: #666; }
+.transaction-page .card { width: 100%; min-width: 0; }
+.transaction-page .card-body { min-width: 0; padding: 16px; }
+.transaction-table-scroll { width: 100%; overflow-x: auto; overscroll-behavior-inline: contain; }
+.transaction-table-scroll:focus-visible { outline: 2px solid #7a1f36; outline-offset: 3px; }
+.transaction-page table { min-width: 1150px; }
+.transaction-page th, .transaction-page td { vertical-align: middle; }
+.transaction-page .btn { min-height: 44px; display: inline-flex; align-items: center; gap: 6px; white-space: nowrap; }
+.transaction-page .dataTables_wrapper > .row { gap: 12px 0; }
+.transaction-page .dataTables_filter input { max-width: 100%; min-height: 44px; }
+.transaction-page .dataTables_length select { min-height: 44px; }
+.transaction-page .pagination { flex-wrap: wrap; gap: 4px; }
+.transaction-page .page-link { min-height: 44px; min-width: 44px; text-align: center; }
+@media (min-width: 901px) {
+    .transaction-page { margin-left: 270px; padding: 24px; }
+}
+@media (max-width: 575px) {
+    .transaction-page .card-body { padding: 12px; }
+    .transaction-page .dataTables_filter, .transaction-page .dataTables_length { text-align: left !important; }
+    .transaction-page .dataTables_filter label { display: flex; flex-wrap: wrap; align-items: center; gap: 8px; width: 100%; }
+    .transaction-page .dataTables_filter input { flex: 1; width: 100% !important; min-width: 100px; margin-left: 0 !important; }
+}

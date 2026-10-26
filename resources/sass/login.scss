@@ -1,0 +1,19 @@
+// The login page uses navbar/collapse and its own forms, not the full POS toolkit.
+@import 'bootstrap/scss/functions';
+@import 'variables';
+@import 'bootstrap/scss/variables';
+@import 'bootstrap/scss/maps';
+@import 'bootstrap/scss/mixins';
+@import 'bootstrap/scss/root';
+@import 'bootstrap/scss/reboot';
+@import 'bootstrap/scss/containers';
+@import 'bootstrap/scss/nav';
+@import 'bootstrap/scss/navbar';
+@import 'bootstrap/scss/transitions';
+.ms-auto { margin-left: auto !important; }
+.me-auto { margin-right: auto !important; }
+.shadow-sm { box-shadow: 0 .125rem .25rem rgba(0,0,0,.075) !important; }
+.py-4 { padding-top: 1.5rem !important; padding-bottom: 1.5rem !important; }
+.d-none { display: none !important; }
+.pw-toggle-wrap { display: block; position: relative; width: 100%; }
+@import 'shell';

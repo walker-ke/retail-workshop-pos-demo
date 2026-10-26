@@ -1,0 +1,258 @@
+body{
+
+    display: block !important;
+}
+.currency{
+    font-weight: 600;
+    font-size: 0.9em;
+    margin-right: 2px;
+}
+.shop-picker-form{
+    display: inline-flex;
+    align-items: center;
+    gap: 6px;
+}
+.shop-picker-select{
+    font-size: 13px;
+    padding: 3px 8px;
+    border-radius: 4px;
+    border: 1px solid #ccc;
+    background: #fff;
+    max-width: 180px;
+}
+.navbar{
+    background-color: #7a1f36;
+    position: fixed;
+    z-index: 1;
+}
+.navbar .nav-link,
+.navbar .navlogo a,
+.navbar .navbar-toggler-icon{
+    color: #ffffff;
+}
+.navbar .navbar-toggler{
+    border-color: rgba(255,255,255,0.4);
+}
+.navbar .navbar-toggler-icon{
+    background-image: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 30 30'%3E%3Cpath stroke='rgba(255,255,255,0.85)' stroke-width='2' stroke-linecap='round' stroke-miterlimit='10' d='M4 7h22M4 15h22M4 23h22'/%3E%3C/svg%3E");
+}
+.dropdown{
+    color: white;
+}
+
+
+
+.head{
+    background-color: white;
+    width: 100%;
+    height: 100px;
+    position: relative;
+    bottom: 22px;
+    box-shadow: 0px 1px 3px #ebebeb;
+}
+.head p{
+    font-family: system-ui, -apple-system, 'Segoe UI', sans-serif;
+    margin: 0;
+    color: #121212;
+    position: absolute;
+    padding-top: 35px;
+    left: 328px;
+    font-size: 35px;
+}
+.container .navlogo{
+    position: relative;
+    left: 20px;
+}
+@media(max-width: 1600px){
+    .head p{
+        font-family: system-ui, -apple-system, 'Segoe UI', sans-serif;
+        margin: 0;
+        color: #121212;
+        position: absolute;
+        padding-top: 35px;
+        left: 290px;
+        font-size: 35px;
+    }
+    .container .navlogo{
+        position: relative;
+        left: 143px;
+    }
+}
+
+@media(max-width: 1366px){
+    .head p{
+        font-family: system-ui, -apple-system, 'Segoe UI', sans-serif;
+        margin: 0;
+        color: #121212;
+        position: absolute;
+        padding-top: 35px;
+        left: 290px;
+        font-size: 35px;
+    }
+    .container .navlogo{
+        position: relative;
+        left: 170px;
+    }
+}
+
+/* ===== MOBILE SIDEBAR TOGGLE BUTTON ===== */
+.sidebar-toggle-btn{
+    display: none;
+    border: none;
+    background: transparent;
+    color: #fff;
+    font-size: 20px;
+    padding: 4px 10px;
+    margin-right: 8px;
+}
+
+@media (max-width: 900px){
+    .sidebar-toggle-btn{
+        display: inline-block;
+    }
+}
+
+/*
+ * ===== GLOBAL RESPONSIVE SAFETY NET =====
+ * Most of this app's page-specific stylesheets position their main content
+ * card with a fixed pixel/viewport-unit offset (e.g. "left: 290px") tuned to
+ * clear the always-visible 270px sidebar on desktop. Since the sidebar goes
+ * off-canvas below 900px (see sidebar.css), those offsets are no longer
+ * needed and would otherwise push content off-screen (body has
+ * overflow-x:hidden, so it doesn't scroll into view - it just disappears).
+ * These rules use !important because they must win over those per-page
+ * stylesheets regardless of load order or specificity.
+ */
+@media (max-width: 900px){
+    body{
+
+    }
+
+    .head{
+        height: auto;
+        padding: 16px;
+    }
+
+    .head p{
+        position: static !important;
+        left: 0 !important;
+        padding-top: 0 !important;
+        font-size: 22px !important;
+    }
+
+    .container .navlogo,
+    .navlogo{
+        left: 0 !important;
+    }
+
+    .card,
+    .all,
+    .all-container,
+    .product_index,
+    .counter,
+    .cont,
+    .about_page,
+    .row.justify-content-center,
+    div.container[style*="left"]{
+        position: static !important;
+        left: 0 !important;
+        right: 0 !important;
+        top: 0 !important;
+        width: 100% !important;
+        max-width: 100% !important;
+        margin-left: 0 !important;
+        margin-right: 0 !important;
+    }
+
+    .grid-container{
+        grid-template-columns: 1fr !important;
+        gap: 10px;
+    }
+
+    .footer-inner .pt,
+    .footer-inner .cp{
+        position: static !important;
+        left: 0 !important;
+        text-align: center !important;
+    }
+
+    .footer-inner .row{
+        flex-direction: column;
+        text-align: center;
+        gap: 6px;
+    }
+
+    .site-footer{
+        position: static !important;
+        top: 0 !important;
+        margin-top: 20px !important;
+    }
+
+    /* Let wide DataTables scroll horizontally instead of breaking layout */
+    .card-body{
+        overflow-x: auto;
+    }
+
+
+}
+
+@media (max-width: 480px){
+    .head p{
+        font-size: 18px !important;
+    }
+}
+
+/* ===== PASSWORD VISIBILITY TOGGLE (applied app-wide via layouts/app.blade.php) ===== */
+.pw-toggle-wrap{
+    position: relative;
+    display: block;
+}
+
+.pw-toggle-wrap input{
+    padding-right: 38px !important;
+}
+
+.pw-toggle-btn{
+    position: absolute;
+    right: 4px;
+    top: 50%;
+    transform: translateY(-50%);
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    width: 30px;
+    height: 30px;
+    background: none;
+    border: none;
+    color: #999;
+    cursor: pointer;
+    padding: 0;
+    font-size: 14px;
+    line-height: 1;
+    z-index: 2;
+}
+
+.pw-toggle-btn i{
+    display: block;
+}
+
+.pw-toggle-btn:hover{
+    color: #7a1f36;
+}
+
+
+img[loading="lazy"] { object-fit: cover; }
+
+/* Fixed navigation keeps a stable full-width box across fonts and viewports. */
+#app > .navbar {
+    top: 0;
+    left: 0;
+    right: 0;
+    width: 100%;
+    min-height: 56px;
+    z-index: 1030;
+}
+#app > .navbar .navlogo {
+    left: 0;
+    flex-shrink: 0;
+}

@@ -1,0 +1,47 @@
+body{
+    overflow-x: hidden;
+}
+
+
+.userindex{
+    position: relative;
+    top: 50px;
+}
+
+.deleteSign h1{
+    font-size: 100px;
+    position: relative;
+    text-align: center;
+    color: #dc3545;
+}
+
+.confirmation h1{
+    text-align: center;
+    color: #555555;
+}
+
+.confirmation h6{
+    text-align: center;
+    color: #adb5bd;
+}
+
+.card{
+    position: relative;
+    width: 159vh;
+    left: 315px;
+    top: 20px;
+}
+p{
+    font-family: system-ui, -apple-system, 'Segoe UI', sans-serif;
+    font-size: 30px;
+    position: relative;
+}
+
+@media(max-width: 1366px){
+    .card{
+        position: relative;
+        width: 160vh;
+        left: 270px;
+        top: 20px;
+    }
+}

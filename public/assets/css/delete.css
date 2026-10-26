@@ -1,0 +1,21 @@
+.userindex{
+    position: relative;
+    top: 50px;
+}
+
+.deleteSign h1{
+    font-size: 100px;
+    position: relative;
+    text-align: center;
+    color: #dc3545;
+}
+
+.confirmation h1{
+    text-align: center;
+    color: #555555;
+}
+
+.confirmation h6{
+    text-align: center;
+    color: #adb5bd;
+}

@@ -1,0 +1,331 @@
+.dash-shell{
+    margin-left: 270px;
+    padding: 18px 22px 40px;
+    box-sizing: border-box;
+}
+
+.dash-shell *{
+    box-sizing: border-box;
+}
+
+.dash-card{
+    background: #fff;
+    border: 1px solid #e6e6ea;
+    border-radius: 10px;
+    padding: 16px 18px;
+    box-shadow: 0 1px 3px rgba(0,0,0,0.05);
+}
+
+/* ===== TOP ROW: CHART + TOTAL SALES ===== */
+.dash-top{
+    display: flex;
+    gap: 14px;
+    margin-bottom: 18px;
+    align-items: stretch;
+}
+
+.dash-chart-card{
+    flex: 1 1 0;
+    min-width: 0;
+}
+
+.dash-chart-header{
+    display: flex;
+    justify-content: space-between;
+    align-items: flex-start;
+    margin-bottom: 14px;
+}
+
+.dash-chart-title{
+    font-size: 17px;
+    font-weight: 700;
+    color: #222;
+}
+
+.dash-chart-sub{
+    font-size: 12px;
+    color: #888;
+}
+
+.dash-chart-nav{
+    display: flex;
+    align-items: center;
+    gap: 4px;
+}
+
+.dash-nav-btn{
+    display: inline-flex;
+    align-items: center;
+    justify-content: center;
+    width: 28px;
+    height: 28px;
+    border-radius: 6px;
+    border: 1px solid #e6e6ea;
+    background: #fafafa;
+    color: #555;
+    text-decoration: none;
+    cursor: pointer;
+}
+
+.dash-nav-btn:hover{
+    background: #f7eef1;
+    color: #7a1f36;
+    text-decoration: none;
+}
+
+.dash-bar-chart{
+    display: flex;
+    align-items: flex-end;
+    gap: 6px;
+    height: 200px;
+    padding-top: 10px;
+}
+
+.dash-bar-col{
+    flex: 1 1 0;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    height: 100%;
+    gap: 4px;
+}
+
+.dash-bar-track{
+    flex: 1 1 auto;
+    width: 100%;
+    display: flex;
+    align-items: flex-end;
+    justify-content: center;
+}
+
+.dash-bar{
+    width: 65%;
+    background: #7a1f36;
+    border-radius: 4px 4px 0 0;
+    min-height: 2px;
+    transition: height .15s ease;
+}
+
+.dash-bar-value{
+    font-size: 10px;
+    color: #888;
+    white-space: nowrap;
+}
+
+.dash-bar-label{
+    font-size: 11px;
+    color: #666;
+    font-weight: 600;
+}
+
+.dash-total-card{
+    flex: 0 0 230px;
+    display: flex;
+    flex-direction: column;
+}
+
+.dash-total-title{
+    font-size: 14px;
+    font-weight: 700;
+    color: #222;
+}
+
+.dash-total-number{
+    font-size: 46px;
+    font-weight: 800;
+    color: #7a1f36;
+    line-height: 1.1;
+    margin: 6px 0 14px;
+}
+
+.dash-total-sub{
+    font-size: 12px;
+    color: #888;
+}
+
+.dash-total-month{
+    font-size: 15px;
+    font-weight: 700;
+    color: #333;
+    margin-top: 2px;
+}
+
+.dash-total-amount{
+    font-size: 13px;
+    color: #666;
+    margin-top: 2px;
+}
+
+/* ===== PERIODIC REPORTS ===== */
+.dash-period-bar{
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    gap: 12px;
+    background: #fff;
+    border: 1px solid #e6e6ea;
+    border-radius: 10px;
+    padding: 10px 16px;
+    margin-bottom: 10px;
+}
+.dash-period-bar .dash-period-title{
+    margin-right: auto;
+}
+
+.dash-period-title{
+    font-size: 14px;
+    font-weight: 700;
+    color: #7a1f36;
+}
+
+.dash-date-form{
+    display: flex;
+    align-items: center;
+    gap: 14px;
+    background: #fff;
+    border: 1px solid #e6e6ea;
+    border-radius: 10px;
+    padding: 12px 16px;
+    margin-bottom: 14px;
+    font-size: 13px;
+}
+
+.dash-date-form label{
+    display: flex;
+    align-items: center;
+    gap: 6px;
+    margin: 0;
+}
+
+.dash-date-form input{
+    border: 1px solid #ddd;
+    border-radius: 6px;
+    padding: 5px 8px;
+    font-size: 13px;
+}
+
+.dash-grid{
+    display: grid;
+    grid-template-columns: repeat(3, 1fr);
+    gap: 14px;
+}
+
+.dash-card-title{
+    font-size: 14px;
+    font-weight: 700;
+    color: #222;
+    margin-bottom: 2px;
+}
+
+.dash-card-sub{
+    font-size: 11.5px;
+    color: #888;
+    margin-bottom: 10px;
+}
+
+.dash-empty{
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    min-height: 140px;
+    color: #aaa;
+    font-size: 13px;
+}
+
+.dash-list{
+    list-style: none;
+    margin: 10px 0 0;
+    padding: 0;
+}
+
+.dash-list li{
+    display: flex;
+    justify-content: space-between;
+    gap: 10px;
+    padding: 7px 0;
+    border-bottom: 1px solid #f2f2f4;
+    font-size: 13px;
+}
+
+.dash-list li:last-child{
+    border-bottom: none;
+}
+
+.dash-list li span{
+    color: #444;
+    overflow: hidden;
+    text-overflow: ellipsis;
+    white-space: nowrap;
+}
+
+.dash-list li strong{
+    color: #7a1f36;
+    flex-shrink: 0;
+}
+
+.dash-card-total{
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    text-align: center;
+}
+
+.dash-big-number{
+    font-size: 52px;
+    font-weight: 800;
+    color: #7a1f36;
+    margin-top: 16px;
+}
+
+.dash-hour-chart{
+    display: flex;
+    align-items: flex-end;
+    gap: 2px;
+    height: 140px;
+    margin-top: 10px;
+}
+
+.dash-hour-col{
+    flex: 1 1 0;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    height: 100%;
+}
+
+.dash-hour-track{
+    width: 100%;
+}
+
+.dash-hour-label{
+    font-size: 9px;
+    color: #999;
+    margin-top: 2px;
+}
+
+/* ===== RESPONSIVE ===== */
+@media (max-width: 1100px){
+    .dash-grid{
+        grid-template-columns: repeat(2, 1fr);
+    }
+}
+
+@media (max-width: 900px){
+    .dash-shell{
+        margin-left: 0;
+        padding: 14px;
+    }
+
+    .dash-top{
+        flex-direction: column;
+    }
+
+    .dash-total-card{
+        flex: 1 1 auto;
+    }
+
+    .dash-grid{
+        grid-template-columns: 1fr;
+    }
+}

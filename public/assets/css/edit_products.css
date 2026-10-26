@@ -1,0 +1,79 @@
+.site-footer{
+    position: relative;
+    top: 180px;
+    width: 100%;
+    margin-top: -100px;
+}
+.footer-inner{
+    padding: 20px;
+}
+
+.footer-inner .pt{
+    position: relative;
+    left: 328px;
+}
+
+.title p{
+    font-size: 20px;
+    font-family: system-ui, -apple-system, 'Segoe UI', sans-serif;
+    text-align: center;
+}
+p{
+    font-family: system-ui, -apple-system, 'Segoe UI', sans-serif;
+    font-size: 30px;
+}
+
+.grid-container{
+    display: grid;
+    grid-template-columns: 1260px auto;
+    padding-bottom: 20px;
+}
+
+.grid-item a{
+    position: relative;
+    top: 10px;
+}
+
+.site-footer{
+    position: relative;
+    top: 270px;
+    width: 100%;
+    margin-top: -100px;
+}
+@media(max-width: 1600px){
+    .card{
+        width: 900px;
+        position: relative;
+        left: 200px;
+        top: 20px;
+    }
+    .grid-container{
+        display: grid;
+        grid-template-columns: 860px auto;
+        padding-bottom: 20px;
+    }
+
+    .grid-item a{
+        position: relative;
+        top: 10px;
+    }
+}
+
+@media(max-width: 1366px){
+    .card{
+        width: 900px;
+        position: relative;
+        left: 120px;
+        top: 20px;
+    }
+    .grid-container{
+        display: grid;
+        grid-template-columns: 860px auto;
+        padding-bottom: 20px;
+    }
+
+    .grid-item a{
+        position: relative;
+        top: 10px;
+    }
+}

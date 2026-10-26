@@ -1,0 +1,223 @@
+body{
+    margin-top:20px;
+    color: #484b51;
+}
+.all{
+    width: 1000px;
+    position: relative;
+    left: 500px;
+}
+.text-secondary-d1 {
+    color: #728299!important;
+}
+.page-header {
+    margin: 0 0 1rem;
+    padding-bottom: 1rem;
+    padding-top: .5rem;
+    border-bottom: 1px dotted #e2e2e2;
+    display: -ms-flexbox;
+    display: flex;
+    -ms-flex-pack: justify;
+    justify-content: space-between;
+    -ms-flex-align: center;
+    align-items: center;
+}
+.page-title {
+    padding: 0;
+    margin: 0;
+    font-size: 1.75rem;
+    font-weight: 300;
+}
+.brc-default-l1 {
+    border-color: #dce9f0!important;
+}
+
+.ml-n1, .mx-n1 {
+    margin-left: -.25rem!important;
+}
+.mr-n1, .mx-n1 {
+    margin-right: -.25rem!important;
+}
+.mb-4, .my-4 {
+    margin-bottom: 1.5rem!important;
+}
+
+hr {
+    margin-top: 1rem;
+    margin-bottom: 1rem;
+    border: 0;
+    border-top: 1px solid rgba(0,0,0,.1);
+}
+
+.text-grey-m2 {
+    color: #888a8d!important;
+}
+
+.text-success-m2 {
+    color: #86bd68!important;
+}
+
+.font-bolder, .text-600 {
+    font-weight: 600!important;
+}
+
+.text-110 {
+    font-size: 110%!important;
+}
+.text-blue {
+    color: #478fcc!important;
+}
+.pb-25, .py-25 {
+    padding-bottom: .75rem!important;
+}
+
+.pt-25, .py-25 {
+    padding-top: .75rem!important;
+}
+.bgc-default-tp1 {
+    background-color: rgba(121,169,197,.92)!important;
+}
+.bgc-default-l4, .bgc-h-default-l4:hover {
+    background-color: #f3f8fa!important;
+}
+.page-header .page-tools {
+    -ms-flex-item-align: end;
+    align-self: flex-end;
+}
+
+.btn-light {
+    color: #757984;
+    background-color: #f5f6f9;
+    border-color: #dddfe4;
+}
+.w-2 {
+    width: 1rem;
+}
+
+.text-120 {
+    font-size: 120%!important;
+}
+.text-primary-m1 {
+    color: #4087d4!important;
+}
+
+.text-danger-m1 {
+    color: #dd4949!important;
+}
+.text-blue-m2 {
+    color: #68a3d5!important;
+}
+.text-150 {
+    font-size: 150%!important;
+}
+.text-60 {
+    font-size: 60%!important;
+}
+.text-grey-m1 {
+    color: #7b7d81!important;
+}
+.align-bottom {
+    vertical-align: bottom!important;
+}
+
+
+/*STYLE FOR RADIO BUTTONS PAYMENT METHOD */
+:root{
+    --primary-color: #0dcaf0;
+}
+.tenderedAmount{
+    display: flex;
+    flex-wrap: wrap;
+}
+.change{
+    margin-left: 50px;
+}
+.payMethod{
+    display: flex;
+    flex-wrap: wrap;
+    justify-items: center;
+}
+
+.radio-item{
+    position: relative;
+    height: 4rem;
+    width: 4rem;
+    margin: 0.5rem;
+}
+
+.radio-item input{
+    position: absolute;
+    height: 100%;
+    width: 100%;
+    cursor: pointer;
+    z-index: 0;
+    opacity: 0;
+}
+
+.radio-item .radio-tile{
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    height: 100%;
+    border: 1.5px solid var(--primary-color);
+    border-radius: 10px;
+    transition: all 300ms ease;
+}
+
+.radio-item .icon{
+    color: var(--primary-color);
+    font-size: 1.5rem;
+}
+
+.radio-item label{
+    color: black;
+    font-size: 0.5rem;
+    font-weight: 600;
+    text-transform: uppercase;
+    letter-spacing: 1px;
+}
+
+input:checked + .radio-tile{
+    background-color: var(--primary-color);
+    box-shadow: 0 0 5px var(--primary-color);
+}
+
+input:hover + .radio-tile{
+    box-shadow: 0 0 5px var(--primary-color);
+}
+
+input:checked + .radio-tile .icon{
+    color: white;
+}
+input:checked + .radio-tile label{
+    color: white;
+}
+
+.total_value{
+    background-color: var(--primary-color);
+    border: none;
+    width: 250px;
+    flex-direction: column;
+    font-size: 40px;
+}
+
+.total_value::after{
+    background-color: var(--primary-color);
+}
+
+.tot h1{
+    color: #888a8d;
+    font-family: system-ui, -apple-system, 'Segoe UI', sans-serif;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+}
+
+@media(max-width: 1366px){
+    .all{
+        width: 1000px;
+        position: relative;
+        left: 180px;
+    }
+}

@@ -1,0 +1,240 @@
+
+.side-bar{
+ background: #121212;
+ backdrop-filter: blur(15px);
+ width: 270px; /*290px if not decided */
+ box-shadow: 2px 2px 20px 1px rgba(0, 0, 0, 0.1);
+ height: 100vh;
+ position: fixed;
+ top: 0;
+ left: 0;
+ overflow-y: auto;
+ z-index: 1050;
+}
+
+.side-bar.active{
+ left: 0;
+}
+
+/* ===== RESPONSIVE / MOBILE OFF-CANVAS ===== */
+.sidebar-overlay{
+ display: none;
+ position: fixed;
+ inset: 0;
+ background: rgba(0,0,0,0.5);
+ z-index: 1040;
+}
+
+.sidebar-overlay.show{
+ display: block;
+}
+
+@media (max-width: 900px){
+ .side-bar{
+  transform: translateX(-100%);
+  transition: transform 0.25s ease;
+  width: 82%;
+  max-width: 300px;
+ }
+ .side-bar.mobile-open{
+  transform: translateX(0);
+ }
+}
+
+.brand-mark{
+ display: flex;
+ align-items: center;
+ gap: 12px;
+ padding: 28px 24px 0;
+}
+
+.brand-mark-icon{
+ width: 42px;
+ height: 42px;
+ border-radius: 10px;
+ background: #7a1f36;
+ color: #fff;
+ display: flex;
+ align-items: center;
+ justify-content: center;
+ font-size: 18px;
+ flex-shrink: 0;
+}
+
+.brand-mark-text{
+ color: #fff;
+ font-family: system-ui, -apple-system, 'Segoe UI', sans-serif;
+ font-weight: 700;
+ font-size: 16px;
+ line-height: 1.2;
+ letter-spacing: 0.5px;
+}
+
+.brand-mark-text small{
+ color: #b7899a;
+ font-weight: 600;
+ font-size: 11px;
+ letter-spacing: 1px;
+}
+
+.side-bar .menu{
+ width: 100%;
+ margin-top: 20px;
+}
+
+.side-bar .menu .item{
+ position: relative;
+ cursor: pointer;
+}
+.side-bar .menu .item.active{
+	background: #7a1f36;
+	position: relative;
+	cursor: pointer;
+   }
+
+   .side-bar .sub-btn.active{
+	background: #7a1f36;
+	position: relative;
+	cursor: pointer;
+   }
+   .side-bar .sub-menu .sub-item.active{
+	background: #3a0f1a;
+	position: relative;
+	cursor: pointer;
+   }
+
+
+.side-bar .menu .item a{
+ color: white;
+ font-family: system-ui, -apple-system, 'Segoe UI', sans-serif;
+ font-size: 16px;
+ text-decoration: none;
+ display: block;
+ padding: 5px 30px;
+ line-height: 60px;
+}
+
+.side-bar .menu .item a:hover{
+ background: #7a1f36;
+ border-radius: 10px;
+ color: white;
+ transition: 0.3s ease;
+}
+
+.side-bar .menu .item i{
+
+ margin-right: 15px;
+}
+
+.side-bar .menu .item a .dropdown{
+ position: absolute;
+ color: white;
+ right: 0;
+ margin: 20px;
+ transition: 0.3s ease;
+}
+
+
+.side-bar .menu .item .sub-menu{
+ background: #5a1a2c;
+ display: none;
+}
+.side-bar .menu .item .sub-menu.show{
+    background: #000000;
+    display: block;
+}
+
+.side-bar .menu .item .sub-menu a{
+ padding-left: 40px;
+}
+
+.rotate{
+ transform: rotate(90deg);
+}
+
+.menu-btn{
+ position: absolute;
+ color: black;
+ top: 30px;
+ font-size: 20px;
+ margin: 25px;
+ cursor: pointer;
+ transition: left 0.4s ease;
+}
+/*.menu-btn.click{
+  left:280px;
+}
+.side-bar.show{
+  left:0px;
+}*/
+
+
+.main h1{
+ color: rgba(255, 255, 255, 0.8);
+ font-size: 60px;
+ text-align: center;
+ line-height: 80px;
+}
+
+@media (max-width: 900px){
+ .main h1{
+   font-size: 40px;
+   line-height: 60px;
+ }
+}
+
+
+::-webkit-scrollbar-track
+{
+	-webkit-box-shadow: inset 0 0 6px rgba(0,0,0,0.3);
+	border-radius: 10px;
+	background-color: #F5F5F5;
+}
+
+::-webkit-scrollbar
+{
+	width: 5px;
+	background-color: #F5F5F5;
+}
+
+::-webkit-scrollbar-thumb
+{
+	border-radius: 10px;
+	-webkit-box-shadow: inset 0 0 6px rgba(0,0,0,.3);
+	background-color: #d3d3d3;
+
+}
+
+/* Keep role navigation available without covering the POS workspace. */
+.pos-navigation .side-bar { transform: translateX(-100%); transition: transform .25s ease; }
+.pos-navigation .side-bar.mobile-open { transform: translateX(0); }
+
+/* Fit more navigation on phones and keep the bottom clear of browser controls. */
+@media (max-width: 900px) {
+ .side-bar {
+  height: 100vh;
+  height: 100dvh;
+  box-sizing: border-box;
+  padding-bottom: calc(24px + env(safe-area-inset-bottom, 0px));
+  overflow-y: auto;
+  overscroll-behavior-y: contain;
+  touch-action: pan-y;
+  -webkit-overflow-scrolling: touch;
+ }
+ .side-bar .brand-mark { padding: 16px 20px 0; }
+ .side-bar .menu { margin-top: 12px; }
+ .side-bar .menu .item a {
+  display: flex;
+  align-items: center;
+  min-height: 48px;
+  box-sizing: border-box;
+  padding: 10px 20px;
+  line-height: 1.4;
+ }
+ .side-bar .menu .item a .dropdown {
+  position: static;
+  margin: 0 0 0 auto;
+  padding-left: 12px;
+ }
+ .side-bar .menu .item .sub-menu a { padding-left: 40px; }
+}

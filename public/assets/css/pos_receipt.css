@@ -1,0 +1,59 @@
+.receipt-actions { max-width: 380px; margin: 16px auto; display: flex; justify-content: space-between; flex-wrap: wrap; gap: 8px; }
+.sales-receipt {
+    box-sizing: border-box; width: 100%; max-width: 380px; margin: 0 auto 24px; padding: 24px 16px;
+    background: #fff; border: 1px solid #ddd; color: #111; font-family: Arial, Helvetica, sans-serif;
+    font-size: 13px; font-weight: 500; line-height: 1.45; overflow-wrap: anywhere; font-variant-numeric: tabular-nums;
+}
+.sales-receipt p { margin: 0; }
+.sales-receipt-header { text-align: center; font-weight: 700; }
+.sales-receipt-header h1 {
+    margin: 0 0 10px; padding-bottom: 8px; border-bottom: 1px solid #111;
+    font-family: Georgia, 'Times New Roman', serif; font-size: 24px; line-height: 1.15; font-weight: 700; text-transform: uppercase;
+}
+.sales-receipt-payment-details { margin-top: 12px; }
+.sales-receipt-title {
+    margin: 12px 0; padding: 7px 0; border-block: 1px solid #111; text-align: center; text-transform: uppercase;
+    font-family: Georgia, 'Times New Roman', serif; font-size: 24px; font-weight: 700;
+}
+.sales-receipt-preview { margin-bottom: 10px !important; text-align: center; font-weight: 700; }
+.sales-receipt-customer { padding: 0 0 12px; }
+.sales-receipt-customer strong { margin-left: 8px; }
+.sales-receipt-meta { border-top: 1px solid #111; padding: 8px 0; }
+.sales-receipt-meta p { margin-top: 8px; }
+.sales-receipt-line { display: flex; align-items: baseline; justify-content: space-between; gap: 12px; padding: 4px 0; }
+.sales-receipt-line > :last-child { text-align: right; }
+.sales-receipt-items { width: 100%; min-width: 0; border-collapse: collapse; table-layout: fixed; font-size: 12px; }
+.sales-receipt-code-col { width: 30%; }
+.sales-receipt-items th { border-block: 1px solid #111; padding: 7px 0; font-size: 11px; font-weight: 700; }
+.sales-receipt-items td { padding: 2px 0; vertical-align: top; }
+.sales-receipt-items th:first-child, .sales-receipt-items td:first-child { text-align: left; }
+.sales-receipt-items th:not(:first-child), .sales-receipt-item-values td:not(:first-child) { text-align: right; }
+.sales-receipt-item-name td { padding-top: 8px; font-size: 13px; font-weight: 700; }
+.sales-receipt-item-values td { padding-bottom: 8px; }
+.sales-receipt-items tbody { break-inside: avoid; page-break-inside: avoid; }
+.sales-receipt-totals { border-top: 3px double #111; padding: 6px 0; }
+.sales-receipt-grand { font-size: 15px; margin-bottom: 8px; }
+.sales-receipt-footer { border-top: 1px solid #111; margin-top: 4px; }
+.sales-receipt-served { padding: 8px 0; }
+.sales-receipt-served strong { margin-left: 12px; }
+.sales-receipt-thanks { border-top: 1px solid #111; padding-top: 8px; text-align: center; font-weight: 700; }
+.payment-panel { max-width: 380px; margin: 0 auto 16px; padding: 16px 20px; background: #fff; border: 1px solid #ddd; border-radius: 4px; }
+.payment-panel > label { font-weight: 600; font-size: 13px; }
+@media print {
+    @page { size: auto; margin: 3mm; }
+    html, body { width: auto !important; height: auto !important; margin: 0 !important; padding: 0 !important; overflow: visible !important; background: #fff !important; }
+    .no-print, .receipt-actions, .payment-panel, .navbar, .side-bar, .sidebar-overlay, .footer, #toast-container { display: none !important; }
+    #app, main, #completeSaleForm { display: block !important; position: static !important; width: auto !important; max-width: none !important; height: auto !important; margin: 0 !important; padding: 0 !important; overflow: visible !important; }
+    .sales-receipt { width: 74mm; max-width: 100%; margin: 0 auto; padding: 0; border: none; box-shadow: none; font-size: 11px; }
+    .sales-receipt-header h1, .sales-receipt-title { font-size: 21px; }
+    .sales-receipt-items, .sales-receipt-items th { font-size: 10px; }
+    .sales-receipt-item-name td { font-size: 11px; }
+    .sales-receipt-grand { font-size: 13px; }
+    .sales-receipt-footer, .sales-receipt-totals { break-inside: avoid; page-break-inside: avoid; }
+}
+
+.sales-receipt-number { font-size: 15px; font-weight: 700; }
+
+@media screen {
+    .receipt-page { padding-top: 56px; }
+}

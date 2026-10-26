@@ -1,0 +1,21 @@
+:root{color-scheme:dark;--wine:#7a1f36;--ink:#fff7f3;--muted:#d9bdc5;--cream:#f5e9e3}
+*{box-sizing:border-box}
+body{margin:0;background:#511a2b;background:radial-gradient(ellipse at top left,#7a1f36 0%,#511a2b 55%,#2d141d 100%);color:var(--ink);font-family:system-ui,-apple-system,'Segoe UI',sans-serif}
+.welcome{min-height:100vh;min-height:100dvh;max-width:1440px;margin:auto;padding:36px clamp(24px,6vw,88px);display:flex;flex-direction:column}
+.brand{display:flex;align-items:center;gap:12px;font-size:18px;font-weight:800;letter-spacing:.03em}
+.brand small{display:block;font-size:10px;letter-spacing:.22em;font-weight:600;margin-top:3px;color:var(--muted)}
+.brand-icon{display:grid;place-items:center;background:var(--cream);color:var(--wine);width:46px;height:46px;border-radius:12px;font-size:21px}
+.welcome-content{flex:1;display:grid;grid-template-columns:minmax(0,460px);justify-content:center;align-items:center;padding-block:64px}
+.entry{background:#ffffff09;border:1px solid #ffffff24;border-radius:20px;padding:clamp(26px,4vw,48px);box-shadow:0 16px 48px #210c1833;position:relative;overflow:hidden}
+.entry-icon{width:56px;height:56px;background:#ffffff12;color:#f1c4d0;display:grid;place-items:center;border-radius:16px;font-size:23px}
+h2{font-size:clamp(1.3rem,2vw,1.7rem);letter-spacing:-.03em;margin:26px 0 12px;text-wrap:balance}
+.entry p{font-size:15px;line-height:1.7;color:var(--muted);margin:0 0 28px}
+.enter{display:flex;align-items:center;justify-content:space-between;gap:16px;background:var(--cream);color:#60172c;text-decoration:none;font-size:15px;font-weight:650;padding:17px 20px;border-radius:10px;min-height:54px;transition:background .15s,transform .15s}
+.enter:hover{background:#fff7f3;transform:translateY(-1px)}
+.enter:active{transform:translateY(1px)}
+.enter:focus-visible{outline:3px solid #f1c4d0;outline-offset:4px}
+.entry-note{margin-top:18px;font-size:12px;color:var(--muted);text-align:center}
+.entry-note i{margin-right:6px}
+footer{display:flex;justify-content:space-between;gap:16px;border-top:1px solid #ffffff24;padding-top:20px;font-size:10px;font-weight:600;letter-spacing:.08em;color:var(--muted)}
+@media(max-width:700px){.welcome{padding:24px}.welcome-content{padding-block:44px}.entry{padding:26px}.entry-icon{width:44px;height:44px;font-size:19px}h2{margin-top:20px}.entry p{margin-bottom:22px}footer{padding-top:16px}}
+@media(prefers-reduced-motion:reduce){.enter{transition:none}.enter:hover,.enter:active{transform:none}}

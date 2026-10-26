@@ -1,0 +1,22 @@
+@import 'variables';
+@import 'bootstrap/scss/bootstrap';
+
+// Reserve password controls from first paint; wrapping should not change sizing.
+.pw-toggle-wrap { display: block; position: relative; width: 100%; }
+// Legacy Bootstrap 4 presentation helpers retained for existing forms.
+.close { border: 0; background: transparent; font-size: 1.5rem; line-height: 1; }
+.form-group { margin-bottom: 1rem; }
+.custom-select { appearance: auto; }
+.input-group-append, .input-group-prepend { display: flex; }
+
+// Existing screens use these small Bootstrap 4 presentation helpers.
+.form-row { display: flex; flex-wrap: wrap; margin-right: -5px; margin-left: -5px; }
+.form-row > .col, .form-row > [class*="col-"] { padding-right: 5px; padding-left: 5px; }
+.float-right { float: right !important; }
+.float-left { float: left !important; }
+.text-right { text-align: right !important; }
+.text-left { text-align: left !important; }
+.badge-success { background-color: $success; }
+.badge-danger { background-color: $danger; }
+
+@import 'shell';
