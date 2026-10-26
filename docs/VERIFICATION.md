@@ -18,5 +18,3 @@ These checks ran on this separate demo, using made-up data:
 Each database check creates a temporary MariaDB server with a private socket, then removes it. The original business repository and database were not modified. Unit and archive tests cover the backup helpers. Full restoration is disabled in demo mode and was not tested as a public feature.
 
 These results describe the local checks on that date. They do not certify security, capacity or a future hosted setup. The included CI workflow lets these checks run again.
-
-Claude independently reviewed the credential-free isolation design. Its suggestions on global recovery denial, encoded-path tests, overwrite/reset safeguards and shared-demo limits were checked against the implementation. Unverified hypothetical profile/upload routes were not treated as existing defects.
