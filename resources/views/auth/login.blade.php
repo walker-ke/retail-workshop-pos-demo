@@ -11,14 +11,14 @@
             <div class="auth-brand-title">DEMO RETAIL WORKSHOP</div>
             <div class="auth-brand-subtitle">POINT OF SALE</div>
         </div>
-        <div class="auth-heading">{{ __('Sign in to your account') }}</div>
+        <div class="auth-heading">{{ __('Sign in to try the demo') }}</div>
 
         @if(config('demo.enabled'))
         <div style="font-size:13px;background:#f6f2f3;padding:12px;border-radius:8px;margin:16px 0;line-height:1.6">
-            <strong>Explore with fictional records</strong><br>
+            <strong>Try a sample account</strong><br>
             Usernames: <code>cashier</code>, <code>manager</code>, or <code>owner</code> (read-only).<br>
             Password: <code>DemoWorkshop2026!</code><br>
-            Please do not enter personal or real business information.
+            Use sample information only. Everyone shares these demo records.
         </div>
         @endif
         <form method="POST" action="{{ route('login') }}">
@@ -50,7 +50,7 @@
                 <label for="remember">{{ __('Remember Me') }}</label>
             </div>
 
-            <button type="submit" class="auth-submit"><i class="fa-solid fa-right-to-bracket"></i> {{ __('Login') }}</button>
+            <button type="submit" class="auth-submit"><i class="fa-solid fa-right-to-bracket"></i> {{ __('Sign in') }}</button>
 
 
         </form>

@@ -21,7 +21,7 @@
     @endif
 </head>
 <body>
-@if(config('demo.enabled'))<div style="position:fixed;top:60px;left:0;right:0;z-index:1050;background:#fff3cd;color:#533f03;padding:6px 12px;text-align:center;font-size:12px;line-height:1.4">Portfolio demo · Fictional records only · Owner is read-only · No payments are sent</div>@endif
+@if(config('demo.enabled'))<div style="position:fixed;top:60px;left:0;right:0;z-index:1050;background:#fff3cd;color:#533f03;padding:6px 12px;text-align:center;font-size:12px;line-height:1.4">Sample data only · Owner can view records · No payments are sent</div>@endif
 
 
 
@@ -51,7 +51,7 @@
                         @guest
                             @if (Route::has('login'))
                                 <li class="nav-item">
-                                    <a class="nav-link" href="{{ route('login') }}">{{ __('Login') }}</a>
+                                    <a class="nav-link" href="{{ route('login') }}">{{ __('Sign in') }}</a>
                                 </li>
                             @endif
                         @else

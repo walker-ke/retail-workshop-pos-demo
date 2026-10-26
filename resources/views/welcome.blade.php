@@ -14,13 +14,13 @@
             <section class="entry" aria-labelledby="entry-title">
                 <span class="entry-icon"><i class="fa-solid fa-shirt" aria-hidden="true"></i></span>
                 <h2 id="entry-title">Welcome to DEMO RETAIL</h2>
-                <p>A retail and workshop portfolio demo.<br>Explore shops, stock, sales and production with fictional records.</p>
+                <p>Try making a sale, moving stock or recording a workshop job.<br>Everything here uses sample records.</p>
                 @auth
                     <a class="enter" href="{{ route(auth()->user()->hasAccess('dashboard') ? 'home' : 'pos') }}">Open your workspace <i class="fa-solid fa-arrow-right" aria-hidden="true"></i></a>
                 @else
                     <a class="enter" href="{{ route('login') }}">Sign in <i class="fa-solid fa-arrow-right" aria-hidden="true"></i></a>
                 @endauth
-                <div class="entry-note"><i class="fa-solid fa-lock" aria-hidden="true"></i> Synthetic data · No real payments</div>
+                <div class="entry-note"><i class="fa-solid fa-lock" aria-hidden="true"></i> Sample data · No real payments</div>
             </section>
         </div>
         <footer>DEMO RETAIL WORKSHOP <span>Point of Sale</span></footer>

@@ -6,6 +6,12 @@ All names, products, payments and records are made up. Payments are recorded onl
 
 ![Workshop overview with sample data](docs/screenshots/workshop.jpg)
 
+*Recording workshop jobs and checking worker balances with sample data.*
+
+## About this project
+
+This demo brings a shop sale and the work behind it into one app: selling an item, moving stock and keeping track of workshop earnings. Try a sale as a cashier, then switch to a manager to follow the stock and workshop records.
+
 ## Try the demo
 
 Use one of these accounts. The password for all four is **`DemoWorkshop2026!`**.
@@ -74,17 +80,7 @@ composer audit --locked
 npm audit
 ```
 
-The database checks below also need Python 3 and local `mariadbd`, `mariadb-install-db` and `mysql` commands. Each creates its own temporary MariaDB server.
-
-```sh
-APP_ENV=testing DEMO_MODE=true php tools/test-demo.php
-APP_ENV=testing DEMO_MODE=false php tools/test-workshop.php
-APP_ENV=testing DEMO_MODE=false php tools/test-stock-transfers.php
-APP_ENV=testing DEMO_MODE=false php tools/test-hubs.php
-APP_ENV=testing DEMO_MODE=false php tools/test-refund-integrity.php
-```
-
-Those `DEMO_MODE=false` commands test the app's wider features in temporary databases. Keep demo mode on when running a shared demo. See [what was checked](docs/VERIFICATION.md).
+For database checks and the previous results, see [the testing guide](docs/VERIFICATION.md).
 
 ## Sharing the app
 

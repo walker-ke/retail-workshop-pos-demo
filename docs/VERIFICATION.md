@@ -18,3 +18,17 @@ These checks ran on this separate demo, using made-up data:
 Each database check creates a temporary MariaDB server with a private socket, then removes it. The original business repository and database were not modified. Unit and archive tests cover the backup helpers. Full restoration is disabled in demo mode and was not tested as a public feature.
 
 These results describe the local checks on that date. They do not certify security, capacity or a future hosted setup. The included CI workflow lets these checks run again.
+
+## Run the database checks
+
+The database checks below also need Python 3 and local `mariadbd`, `mariadb-install-db` and `mysql` commands. Each creates its own temporary MariaDB server.
+
+```sh
+APP_ENV=testing DEMO_MODE=true php tools/test-demo.php
+APP_ENV=testing DEMO_MODE=false php tools/test-workshop.php
+APP_ENV=testing DEMO_MODE=false php tools/test-stock-transfers.php
+APP_ENV=testing DEMO_MODE=false php tools/test-hubs.php
+APP_ENV=testing DEMO_MODE=false php tools/test-refund-integrity.php
+```
+
+Those `DEMO_MODE=false` commands test the app's wider features in temporary databases. Keep demo mode on when running a shared demo.

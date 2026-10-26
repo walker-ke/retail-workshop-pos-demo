@@ -14,15 +14,15 @@ class DemoRestrictions
         if (!$request->isMethodSafe() && $request->user()) {
             if ($request->is('add-user', 'update-user/*', 'reset-password/*', 'delete-user', 'receipt-settings', 'receipt-settings/*',
                 'add-shop', 'update-shop/*', 'delete-shop', 'add-payment-type', 'update-payment-type/*', 'delete-payment-type', 'import-products')) {
-                abort(403, 'Administration is disabled in this synthetic demo.');
+                abort(403, 'Account and shop settings are locked in this demo.');
             }
             if ($request->user()->isTopAdmin() && !$request->is('switch-shop', 'logout')) {
-                abort(403, 'The demo owner account is read-only. Try the demo manager for sample workflows.');
+                abort(403, 'The owner account can only view records. Sign in as manager to try making changes.');
             }
         }
         if (!$request->isMethodSafe() && $request->user()) {
             $key = 'demo-write:'.$request->ip().':'.$request->user()->id;
-            if (\Illuminate\Support\Facades\RateLimiter::tooManyAttempts($key, 120)) abort(429, 'Please slow down in the shared demo.');
+            if (\Illuminate\Support\Facades\RateLimiter::tooManyAttempts($key, 120)) abort(429, 'Too many changes at once. Wait a minute, then try again.');
             \Illuminate\Support\Facades\RateLimiter::hit($key, 60);
         }
         return $next($request);
